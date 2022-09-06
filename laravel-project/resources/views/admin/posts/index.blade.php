@@ -1,5 +1,9 @@
 @extends('layouts.dashboard')
-
+{{-- @if ($show_deleted_message === 'yes')
+<div class="alert alert-success" role="alert">
+	Post cancellato
+  </div>
+@endif --}}
 @section('content')
   @foreach ($posts as $post)
  

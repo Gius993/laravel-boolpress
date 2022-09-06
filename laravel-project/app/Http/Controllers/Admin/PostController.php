@@ -128,7 +128,10 @@ class PostController extends Controller
     {
        $post_to_delete = Post::findOrFail($id);
        $post_to_delete->delete();
-       return redirect()->route('admin.posts.index');
+       $data =[
+        'deleted' => 'yes'
+       ];
+       return redirect()->route('admin.posts.index', $data);
     }
 
     protected function getFreeSlug($title){

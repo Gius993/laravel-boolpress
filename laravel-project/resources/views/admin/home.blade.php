@@ -7,4 +7,5 @@
 		Benvenuto {{ $user->name }}
 		con email {{ $user->email }}		
 	</div>
+	
 @endsection

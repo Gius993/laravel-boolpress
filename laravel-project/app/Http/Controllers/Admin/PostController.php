@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Post;
 use Illuminate\Support\Str;
-
+use Carbon\Carbon;
 class PostController extends Controller
 {
     /**
@@ -15,15 +15,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $posts = Post::all();
-        // $request_info = $request->all();
-        // $show_deleted_message = isset($request_info['deleted']) ? $request_info['deleted'] : null;
         
         $data = [
             'posts' => $posts,
-            // '$show_deleted_message' => $show_deleted_message
         ];
         return view('admin.posts.index', $data);
     }
@@ -68,6 +65,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        $now =  Carbon::now();
+        
         $post = Post::find($id);
 
         $data = [

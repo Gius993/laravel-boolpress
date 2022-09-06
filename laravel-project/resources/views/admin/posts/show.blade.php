@@ -3,7 +3,13 @@
 @section('content')
 	<h1>{{ $post->title }}</h1>
 	<p>{{ $post->content }}</p>
+	<div>
+		<ul>
+			<li>{{ $post->created_at->format('d F Y')}}</li>
+			<li>{{ $post->updated_at('d F Y') }}</li>
 
+		</ul>
+	</div>
 	<a  class="btn btn-primary" href="{{ route('admin.posts.edit', ['post' => $post->id]) }}">
 		Modifica Post
 	</a>

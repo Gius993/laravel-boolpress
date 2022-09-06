@@ -6,7 +6,13 @@
 	<div>
 		<ul>
 			<li>{{ $post->created_at->format('d F Y')}}</li>
-			<li>{{ $post->updated_at('d F Y') }}</li>
+			
+		@if ($diff > 0)
+			<li>Creato: {{ $diff }} giorn{{ $diff > 1 ? 'i' : 'o'}} fa</li>
+		@else
+				Creato oggi
+		@endif
+			
 
 		</ul>
 	</div>

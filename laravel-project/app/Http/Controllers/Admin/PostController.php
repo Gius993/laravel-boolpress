@@ -15,12 +15,16 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
         $posts = Post::all();
+        $request_info = $request->all();
         
+        $deleted_message = isset($request_info['deleted']) ? $request_info['deleted'] : null;
         $data = [
             'posts' => $posts,
+            'deleted_message' => $deleted_message
         ];
         return view('admin.posts.index', $data);
     }

@@ -23,6 +23,6 @@
 		@csrf
 		@method('DELETE')
 
-		<input type="submit" class="btn btn-danger mt-2" value="Cancella" >
+		<input type="submit" class="btn btn-danger mt-2" value="Cancella" onclick="return confirm('sicuro di voler eliminare ?')" >
 	</form>
 @endsection

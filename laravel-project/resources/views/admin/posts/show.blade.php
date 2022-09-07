@@ -13,12 +13,21 @@
 				Creato oggi
 		@endif
 			
-
 		</ul>
 	</div>
 	<a  class="btn btn-primary" href="{{ route('admin.posts.edit', ['post' => $post->id]) }}">
 		Modifica Post
 	</a>
+	@if($post->category)
+	<div>
+		<h3>Categoria: {{ $post->category->name }}</h3>
+		
+	</div>
+	@else
+	<div>
+		<h3>Nessuna categoria</h3>
+	</div>
+	@endif
 	<form action="{{ route('admin.posts.destroy', ['post' => $post->id]) }}" method="post">
 		@csrf
 		@method('DELETE')

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use App\Category;
 class PostController extends Controller
 {
     /**
@@ -36,7 +37,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+        $data = [
+            'categories' => $categories
+        ];
+        return view('admin.posts.create', $data);
     }
 
     /**
@@ -50,12 +55,12 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'content' => 'required|max:60000',
+            'category_id' => 'nullable | exists:categories,id'
         ]);
         $form_data = $request->all();
-
+        
         $new_post = new Post();
         $new_post->fill($form_data);
-       
         $new_post->slug = $this->getFreeSlug($new_post->title);
         $new_post->save();
         return redirect()->route('admin.posts.show', ['post' => $new_post->id]);
@@ -70,6 +75,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
+        
         $now =  Carbon::now();
         $diff = $post->created_at->diffInDays($now);
         
@@ -89,8 +95,10 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
+        $categories = Category::all();
         $data = [
-            'post' => $post
+            'post' => $post,
+            'categories' => $categories
         ];
         return view('admin.posts.edit', $data);
     }

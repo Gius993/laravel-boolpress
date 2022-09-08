@@ -34,4 +34,14 @@
 
 		<input type="submit" class="btn btn-danger mt-2" value="Cancella" onclick="return confirm('sicuro di voler eliminare ?')" >
 	</form>
+	<div>
+		<strong>Tags:</strong>
+		@if(count($post->tags->toArray())){
+			@foreach ($post->tags as $tag)
+				{{ $tag->name }}{{ !$loop->last ? ',' : ''}}
+			@endforeach
+		}@else
+		<strong>Nessun tag presente</strong>
+		@endif
+	</div>
 @endsection

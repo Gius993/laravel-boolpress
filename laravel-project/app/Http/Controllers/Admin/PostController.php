@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use App\Post;
+use App\Tag;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Category;
@@ -81,7 +81,8 @@ class PostController extends Controller
         
         $data = [
            'post' => $post,
-           'diff' => $diff
+           'diff' => $diff,
+          
         ];
         return view('admin.posts.show', $data);
     }

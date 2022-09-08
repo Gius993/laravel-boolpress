@@ -36,7 +36,7 @@
 	</form>
 	<h5 class="mt-3">Tags</h5>
 	@foreach($tags as $tag)
-	  <div class="form-check mb-3 mt-3">
+	<div class="form-check mb-3 mt-3">
 		<input 
 		class="form-check-input" 
 		type="checkbox" 
@@ -52,5 +52,6 @@
 		  {{ $tag->name }}
 		</label>
 	  </div>
-	@endforeach
+
+  @endforeach
 @endsection

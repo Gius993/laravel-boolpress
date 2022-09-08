@@ -36,7 +36,7 @@
 	</form>
 	<div>
 		<strong>Tags:</strong>
-		@if(count($post->tags->toArray())){
+		@if(($post->tags->isNotEmpty())){
 			@foreach ($post->tags as $tag)
 				{{ $tag->name }}{{ !$loop->last ? ',' : ''}}
 			@endforeach

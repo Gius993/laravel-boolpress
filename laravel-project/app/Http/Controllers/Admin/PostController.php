@@ -38,8 +38,10 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $tags = Tag::all();
         $data = [
-            'categories' => $categories
+            'categories' => $categories,
+            'tags' => $tags
         ];
         return view('admin.posts.create', $data);
     }
@@ -58,11 +60,17 @@ class PostController extends Controller
             'category_id' => 'nullable | exists:categories,id'
         ]);
         $form_data = $request->all();
-        
+        //per posts
         $new_post = new Post();
         $new_post->fill($form_data);
         $new_post->slug = $this->getFreeSlug($new_post->title);
         $new_post->save();
+
+        // per tags
+        if(isset($form_data['tags'])){
+            $new_post->tags()->sync($form_data['tags']);
+        }
+
         return redirect()->route('admin.posts.show', ['post' => $new_post->id]);
     }
 
@@ -97,9 +105,11 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $categories = Category::all();
+        $tags = Tag::all();
         $data = [
             'post' => $post,
-            'categories' => $categories
+            'categories' => $categories,
+            'tags'  => $tags
         ];
         return view('admin.posts.edit', $data);
     }
@@ -124,6 +134,10 @@ class PostController extends Controller
         //aggiorno il post
         
         $post_to_update->update($form_data);
+
+        //aggiornamento tag
+
+        
         return redirect()->route('admin.posts.show', ['post' => $post_to_update->id]);
     }
 

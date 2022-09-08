@@ -23,10 +23,35 @@
 				  <select class="form-select" id="category_id" name="category_id">
 					 <option value="">Nessuna</option>
 					@foreach ($categories as $category)
-						<option value="{{ $category->id }}">{{ $category->name }}</option>
+						<option 
+						value="{{ $category->id }}">
+						{{ $category->name }}
+					</option>
 					 @endforeach
 				 </select>
 		  </div>
+		<h5>Tags</h5>
+		@foreach($tags as $tag)
+		  <div class="form-check mb-3">
+			<input 
+			class="form-check-input" 
+			type="checkbox" 
+			id="tag-{{$tag->id}}" 
+			value="{{ $tag->id }}"
+			name="tags[]"
+			{{ in_array($tag->id, 
+			old('tags', [])) 
+			? 'checked' 
+			: '' }}
+			>
+			<label 
+			class="form-check-label" 
+			for="tag-{{$tag->id}}"
+			>
+			  {{ $tag->name }}
+			</label>
+		  </div>
+		@endforeach
 		  <div class="mb-3">
 			<label for="content" class="form-label">Content</label>
 			<textarea class="form-control" id="content" rows="5" name="content"></textarea>

@@ -125,22 +125,24 @@ class PostController extends Controller
     {
         $form_data = $request->all();
         $post_to_update = Post::findOrFail($id);
-
+        
         if($form_data['title'] !== $post_to_update->title){
             $form_data['slug'] = $this->getFreeSlug($form_data['title']);
         }else{
             $form_data['slug'] = $post_to_update->slug;
         }
-        //aggiorno il post
+     
+        
         
         $post_to_update->update($form_data);
-
         //aggiornamento tag
         if(isset($form_data['tags'])){
             $post_to_update->tags()->sync($form_data['tags']);
         }else{
             $post_to_update->tags()->sync([]);
         }
+        
+        
 
         return redirect()->route('admin.posts.show', ['post' => $post_to_update->id]);
     }

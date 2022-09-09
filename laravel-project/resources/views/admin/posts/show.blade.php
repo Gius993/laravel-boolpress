@@ -36,11 +36,11 @@
 	</form>
 	<div>
 		<strong>Tags:</strong>
-		@if(($post->tags->isNotEmpty())){
+		@if(($post->tags->isNotEmpty()))
 			@foreach ($post->tags as $tag)
 				{{ $tag->name }}{{ !$loop->last ? ',' : ''}}
 			@endforeach
-		}@else
+		@else
 		<strong>Nessun tag presente</strong>
 		@endif
 	</div>

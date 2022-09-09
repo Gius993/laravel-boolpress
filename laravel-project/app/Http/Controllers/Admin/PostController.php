@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
+use Carbon\Carbon;
+
+use App\Category;
 use App\Post;
 use App\Tag;
-use Illuminate\Support\Str;
-use Carbon\Carbon;
-use App\Category;
 class PostController extends Controller
 {
     /**
@@ -131,17 +134,17 @@ class PostController extends Controller
         }else{
             $form_data['slug'] = $post_to_update->slug;
         }
-     
-        
-        
+         
         $post_to_update->update($form_data);
+      
+        
         //aggiornamento tag
+
         if(isset($form_data['tags'])){
             $post_to_update->tags()->sync($form_data['tags']);
         }else{
             $post_to_update->tags()->sync([]);
         }
-        
         
 
         return redirect()->route('admin.posts.show', ['post' => $post_to_update->id]);

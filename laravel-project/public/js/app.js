@@ -1908,12 +1908,32 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Posts',
   data: function data() {
     return {
-      pageTitle: 'Le titolo'
+      pageTitle: 'Spade e scudi',
+      posts: []
     };
+  },
+  methods: {
+    truncateText: function truncateText(text) {
+      if (text.length > 75) {
+        return text.slice(0, 70) + '...';
+      }
+
+      return text;
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://127.0.0.1:8000/api/posts').then(function (response) {
+      _this.posts = response.data.results;
+    });
   }
 });
 
@@ -1960,21 +1980,19 @@ var render = function render() {
     attrs: {
       href: "/admin"
     }
-  }, [_vm._v(" va ad admin")]), _vm._v(" "), _c("h1", [_vm._v(_vm._s(_vm.pageTitle))]), _vm._v(" "), _vm._m(0)]);
+  }, [_vm._v(" va ad admin")]), _vm._v(" "), _c("h1", [_vm._v(_vm._s(_vm.pageTitle))]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, _vm._l(_vm.posts, function (post) {
+    return _c("div", {
+      key: _vm.id,
+      staticClass: "col-3"
+    }, [_c("div", {
+      staticClass: "card mt-3"
+    }, [_c("h3", [_vm._v(_vm._s(post.title))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.truncateText(post.content)))])])]);
+  }), 0)]);
 };
 
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "row-cols-3"
-  }, [_c("div", {
-    staticClass: "col"
-  }, [_c("div", {
-    staticClass: "card mt-3"
-  }, [_c("h3", [_vm._v("title")]), _vm._v(" "), _c("p", [_vm._v("description")])])])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 

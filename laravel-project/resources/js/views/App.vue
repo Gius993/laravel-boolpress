@@ -12,10 +12,10 @@
 	import Posts from '../components/Posts.vue';
 
 	export default {
-    name: 'App',
-    comments: {
-        Posts
-    },
+		name: 'App',
+		components: {
+			Posts
+		},
  
-}
+	}
 </script>

@@ -12,10 +12,10 @@ class PostController extends Controller
 
         $posts = Post::all();
         
-       $data = [
-        'success' => true,
-       'results' => $posts
-       ];
-       return response()->json($data);
+        $data = [
+            'success' => true,
+            'results' => $posts
+        ];
+        return response()->json($data);
     }
 }

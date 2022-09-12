@@ -1909,7 +1909,12 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Posts'
+  name: 'Posts',
+  data: function data() {
+    return {
+      pageTitle: 'Le titolo'
+    };
+  }
 });
 
 /***/ }),
@@ -1927,7 +1932,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
-  comments: {
+  components: {
     Posts: _components_Posts_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
@@ -1949,7 +1954,13 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("a", {
+    attrs: {
+      href: "/admin"
+    }
+  }, [_vm._v(" va ad admin")]), _vm._v(" "), _c("h1", [_vm._v(_vm._s(_vm.pageTitle))]), _vm._v(" "), _vm._m(0)]);
 };
 
 var staticRenderFns = [function () {
@@ -1957,26 +1968,12 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "container"
-  }, [_c("a", {
-    attrs: {
-      href: "/admin"
-    }
-  }, [_vm._v(" va ad admin")]), _vm._v(" "), _c("div", {
-    staticClass: "row"
+    staticClass: "row-cols-3"
   }, [_c("div", {
     staticClass: "col"
   }, [_c("div", {
-    staticClass: "card"
-  }, [_c("h1", [_vm._v("CIAO")])])]), _vm._v(" "), _c("div", {
-    staticClass: "col"
-  }, [_c("div", {
-    staticClass: "card"
-  }, [_c("h1", [_vm._v("CIAO")])])]), _vm._v(" "), _c("div", {
-    staticClass: "col"
-  }, [_c("div", {
-    staticClass: "card"
-  }, [_c("h1", [_vm._v("CIAO")])])])])]);
+    staticClass: "card mt-3"
+  }, [_c("h3", [_vm._v("title")]), _vm._v(" "), _c("p", [_vm._v("description")])])])]);
 }];
 render._withStripped = true;
 
@@ -49596,6 +49593,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 var app = new Vue({
   el: '#root',

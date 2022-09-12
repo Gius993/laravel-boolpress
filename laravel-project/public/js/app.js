@@ -1916,7 +1916,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       pageTitle: 'Spade e scudi',
-      posts: []
+      posts: [],
+      currentPaginationPage: 1
     };
   },
   methods: {
@@ -1926,14 +1927,22 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return text;
+    },
+    getPosts: function getPosts(pageNumber) {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://127.0.0.1:8000/api/posts?', {
+        params: {
+          page: pageNumber
+        }
+      }).then(function (response) {
+        _this.posts = response.data.results.data;
+        _this.currentPaginationPage = response.data.results.current_page;
+      });
     }
   },
   mounted: function mounted() {
-    var _this = this;
-
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://127.0.0.1:8000/api/posts').then(function (response) {
-      _this.posts = response.data.results;
-    });
+    this.getPosts(1);
   }
 });
 
@@ -1974,7 +1983,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
+  return _c("section", [_c("div", {
     staticClass: "container"
   }, [_c("a", {
     attrs: {
@@ -1984,12 +1993,42 @@ var render = function render() {
     staticClass: "row"
   }, _vm._l(_vm.posts, function (post) {
     return _c("div", {
-      key: _vm.id,
-      staticClass: "col-3"
+      key: post.id,
+      staticClass: "col-4"
     }, [_c("div", {
-      staticClass: "card mt-3"
+      staticClass: "card"
     }, [_c("h3", [_vm._v(_vm._s(post.title))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.truncateText(post.content)))])])]);
-  }), 0)]);
+  }), 0), _vm._v(" "), _c("nav", {
+    attrs: {
+      "aria-label": "Page navigation example"
+    }
+  }, [_c("ul", {
+    staticClass: "pagination"
+  }, [_c("li", {
+    staticClass: "page-item"
+  }, [_c("a", {
+    staticClass: "page-link",
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.getPosts(_vm.currentPaginationPage - 1);
+      }
+    }
+  }, [_vm._v("Previous")])]), _vm._v(" "), _c("li", {
+    staticClass: "page-item"
+  }, [_c("a", {
+    staticClass: "page-link",
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.getPosts(_vm.currentPaginationPage + 1);
+      }
+    }
+  }, [_vm._v("Next")])])])])])]);
 };
 
 var staticRenderFns = [];

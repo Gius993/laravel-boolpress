@@ -2,7 +2,7 @@
 
 	<div>
 
-		<Posts  />
+		<Posts />
 
 	</div>
 
@@ -12,7 +12,7 @@
 	import Posts from '../components/Posts.vue';
 
 	export default {
-    name: "App",
+    name: 'App',
     comments: {
         Posts
     },

@@ -1909,7 +1909,7 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Posts"
+  name: 'Posts'
 });
 
 /***/ }),
@@ -1926,7 +1926,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Posts_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Posts.vue */ "./resources/js/components/Posts.vue");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "App",
+  name: 'App',
   comments: {
     Posts: _components_Posts_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }

@@ -2,7 +2,7 @@
 <section>
 	<div class="container">
 		<a href="/admin"> va ad admin</a>
-		<h1>{{pageTitle}}</h1>
+		<h2>{{pageTitle}}</h2>
 		<div class="row">
 			<div class="col-4" v-for="post in posts" :key="post.id">
 				<div class="card">

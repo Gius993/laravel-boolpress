@@ -1,13 +1,13 @@
 <template>
 	<div>
-	   <h3>DDDDDD</h3>
+	   <h3>About </h3>
 	</div>
    
    </template>
 
    
 <script>
-	
+
 	export default{
 		name: 'AboutPage'
 	}

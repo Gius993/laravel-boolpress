@@ -7,6 +7,7 @@ Vue.use(VueRouter);
 import HomePage from './pages/HomePage.vue';
 import AboutPage from './pages/AboutPage.vue';
 import BlogPage from './pages/BlogPage.vue';
+import ErrorPage from './pages/ErrorPage.vue';
 
 
 
@@ -30,7 +31,11 @@ const router = new VueRouter({
 			component: BlogPage
 		},
 		
-	
+		{
+			path: '/*', 
+			name: 'error',
+			component: ErrorPage
+		}
 	]
   });
 

@@ -2038,7 +2038,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'SinglePost'
+  name: 'SinglePost',
+  data: function data() {
+    return {
+      post: null
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('http://127.0.0.1:8000/api/posts/' + this.$route.params.slug).then(function (response) {
+      _this.post = response.data.results;
+    });
+  }
 });
 
 /***/ }),
@@ -2322,7 +2334,7 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_c("h3", [_vm._v("Pagina dettaglio")]), _vm._v("\n   " + _vm._s(_vm.$route.params.slug) + "\n\n")]);
+  }, [_c("h3", [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("p", [_vm._v("\n\t\t" + _vm._s(_vm.post.content) + "\n\t")])]);
 };
 
 var staticRenderFns = [];

@@ -2332,9 +2332,9 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
+  return _vm.post ? _c("div", {
     staticClass: "container"
-  }, [_c("h3", [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("p", [_vm._v("\n\t\t" + _vm._s(_vm.post.content) + "\n\t")])]);
+  }, [_c("h3", [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("ul", [_vm.post.category ? _c("li", [_vm._v(_vm._s(_vm.post.category.name))]) : _c("li", [_vm._v(" Nessuna categoria")])]), _vm._v(" "), _c("p", [_vm._v("\n\t\t\t" + _vm._s(_vm.post.content) + "\n\t\t")])]) : _c("h2", [_vm._v("\n\tPagina non caricata\n   ")]);
 };
 
 var staticRenderFns = [];

@@ -8,6 +8,7 @@
 				<div class="card">
 					<h3>{{post.title}}</h3>
 					<p>{{truncateText(post.content)}}</p>
+					<router-link class="page-link" :to="{name: 'single-post', params: {slug: post.slug}}">Guarda Dettaglio</router-link>
 				</div>
 			</div>
 	
@@ -15,8 +16,6 @@
 	<nav aria-label="Page navigation example">
 	  <ul class="pagination">
 		<li class="page-item"><a class="page-link" href="#"  @click="getPosts(currentPaginationPage - 1)">Previous</a></li>
-	<!--	<li class="page-item"><a class="page-link" href="#">1</a></li> --->
-	
 		<li class="page-item"><a class="page-link" href="#" @click="getPosts(currentPaginationPage + 1)">Next</a></li>
 	  </ul>
 	</nav>

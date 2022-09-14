@@ -7,10 +7,13 @@
 			<li v-else> Nessuna categoria</li>
 	   </ul>
 	   <h4>Tag</h4>
-	   <ul>
-			<li v-if="post.tags.length > 0" v-for="tag in post.tags" :key="tag.id">{{tag.name}}</li>
-			<li v-else> Nessun Tag</li>
+	   <ul v-if="post.tags.length > 0">
+			<li  v-for="tag in post.tags" :key="tag.id">{{tag.name}}</li>
+			
 	   </ul>
+	   <div v-else>
+		 Nessun Tag
+	   </div>
 		<p>
 			{{post.content}}
 		</p>

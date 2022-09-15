@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 use Carbon\Carbon;
 
 use App\Category;
 use App\Post;
 use App\Tag;
+
 class PostController extends Controller
 {
     /**
@@ -60,10 +62,15 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'content' => 'required|max:60000',
-            'category_id' => 'nullable | exists:categories,id'
+            'category_id' => 'nullable | exists:categories,id',
+            'cover'
         ]);
         $form_data = $request->all();
-        dd($form_data);
+        if(isset($form_data['image'])){
+            //per caricare il film image nella cartella
+            $img_path = Storage::put('post-covers', $form_data['image']);
+            $form_data['cover'] = $img_path;
+        }
         //per posts
         $new_post = new Post();
         $new_post->fill($form_data);

@@ -57,8 +57,8 @@
 			<textarea class="form-control" id="content" rows="5" name="content"></textarea>
 		  </div>
 		  <div class="mb-3">
-			<label class="form-label p-3" for="customFile">Default file input example</label>
-			<input type="file" class="form-control" id="customFile" name="image" />
+			<label class="form-label p-3" for="image">Carica un file</label>
+			<input type="file" class="form-control" id="image" name="image" />
 		  </div>
 		  <input type="submit" value="salva">
 	</form>

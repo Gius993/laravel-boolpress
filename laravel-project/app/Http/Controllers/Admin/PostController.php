@@ -63,6 +63,7 @@ class PostController extends Controller
             'category_id' => 'nullable | exists:categories,id'
         ]);
         $form_data = $request->all();
+        dd($form_data);
         //per posts
         $new_post = new Post();
         $new_post->fill($form_data);

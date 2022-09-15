@@ -63,7 +63,8 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'content' => 'required|max:60000',
             'category_id' => 'nullable | exists:categories,id',
-            'cover'
+            'tags'=> 'nullable|exists:tags,id',
+            'cover' => 'image|size:1024'
         ]);
         $form_data = $request->all();
         if(isset($form_data['image'])){

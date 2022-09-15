@@ -64,7 +64,7 @@ class PostController extends Controller
             'content' => 'required|max:60000',
             'category_id' => 'nullable | exists:categories,id',
             'tags'=> 'nullable|exists:tags,id',
-            'cover' => 'image|size:1024'
+            'cover' => 'image|max:1024'
         ]);
         $form_data = $request->all();
         if(isset($form_data['image'])){
@@ -138,6 +138,16 @@ class PostController extends Controller
         $form_data = $request->all();
         $post_to_update = Post::findOrFail($id);
         
+       
+        if(isset($form_data['image'])){
+            //cancello la vecchia immagine
+            if($post_to_update->cover){
+                Storage::delete($post_to_update->cover);
+            }
+             //carico il nuovo file
+             $img_path = Storage::put('post-covers', $form_data['image']);
+             $form_data['cover'] = $img_path;
+        }
         if($form_data['title'] !== $post_to_update->title){
             $form_data['slug'] = $this->getFreeSlug($form_data['title']);
         }else{

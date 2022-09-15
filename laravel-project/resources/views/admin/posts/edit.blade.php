@@ -12,7 +12,7 @@
         </ul>
     </div>
 @endif
-	<form action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="post">
+	<form action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="post" enctype="multipart/form-data">
 		@csrf
 		@method('PUT')
 		<div class="mb-3">
@@ -32,7 +32,7 @@
 			<label for="content" class="form-label">Contenuto</label>
 			<textarea class="form-control" id="content" rows="5" name="content">{{ $post->content }}</textarea>
 		  </div>
-		  <input type="submit" value="modifica">
+		  
 		  <h5 class="mt-3">Tags</h5>
 	  @foreach($tags as $tag)
 		  <div class="form-check mb-3 mt-3">
@@ -53,6 +53,11 @@
 			</label>
 			</div>
 		@endforeach
+		<div class="mb-3">
+			<label class="form-label p-3" for="image">Carica un file</label>
+			<input type="file" class="form-control" id="image" name="image" />
+		 </div>
+		 <input type="submit" value="modifica">
 	</form>
 
 

@@ -2,9 +2,15 @@
 
 @section('content')
 	<h1>{{ $post->title }}</h1>
+	@if($post->cover)
 	<div class="w-50">
 		<img src="{{ asset('/storage/'. $post->cover) }}" alt="{{ $post->title }}" class="responsive-image">
 	</div>
+	@else
+	<div>
+		<h4>Nessun immagine presente</h4>
+	</div>
+	@endif
 	<p>{{ $post->content }}</p>
 	<div>
 		<ul>

@@ -2,6 +2,9 @@
 
 @section('content')
 	<h1>{{ $post->title }}</h1>
+	<div>
+		<img src="{{ asset('/storage/'. $post->cover) }}" alt="{{ $post->title }}" class="responsive-image">
+	</div>
 	<p>{{ $post->content }}</p>
 	<div>
 		<ul>

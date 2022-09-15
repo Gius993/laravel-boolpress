@@ -2,10 +2,14 @@
 	<div class="container" v-if="post">
 
 	   <h3>{{ post.title}}</h3>
+	  
 	   <ul>
 			<li v-if="post.category">{{post.category.name}}</li>
 			<li v-else> Nessuna categoria</li>
 	   </ul>
+	   <div v-if="post.cover">
+			<img :src="post.cover" :alt="post.title">
+		</div>
 	   <h4>Tag</h4>
 	   <ul v-if="post.tags.length > 0">
 			<li  v-for="tag in post.tags" :key="tag.id">{{tag.name}}</li>

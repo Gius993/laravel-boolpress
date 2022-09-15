@@ -2344,7 +2344,12 @@ var render = function render() {
 
   return _vm.post ? _c("div", {
     staticClass: "container"
-  }, [_c("h3", [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("ul", [_vm.post.category ? _c("li", [_vm._v(_vm._s(_vm.post.category.name))]) : _c("li", [_vm._v(" Nessuna categoria")])]), _vm._v(" "), _c("h4", [_vm._v("Tag")]), _vm._v(" "), _vm.post.tags.length > 0 ? _c("ul", _vm._l(_vm.post.tags, function (tag) {
+  }, [_c("h3", [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("ul", [_vm.post.category ? _c("li", [_vm._v(_vm._s(_vm.post.category.name))]) : _c("li", [_vm._v(" Nessuna categoria")])]), _vm._v(" "), _vm.post.cover ? _c("div", [_c("img", {
+    attrs: {
+      src: _vm.post.cover,
+      alt: _vm.post.title
+    }
+  })]) : _vm._e(), _vm._v(" "), _c("h4", [_vm._v("Tag")]), _vm._v(" "), _vm.post.tags.length > 0 ? _c("ul", _vm._l(_vm.post.tags, function (tag) {
     return _c("li", {
       key: tag.id
     }, [_vm._v(_vm._s(tag.name))]);

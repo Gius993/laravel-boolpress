@@ -23,7 +23,10 @@ class PostController extends Controller
        $post = Post::where('slug', '=', $slug)
          ->with(['tags', 'category'])
          ->first();
-      
+         if($post->cover){
+             $post->cover = asset('storage/' .$post->cover);
+
+         }
         if($post){
             $data =[
              'success' => true,

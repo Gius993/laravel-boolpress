@@ -7,6 +7,9 @@
 	<title>Document</title>
 </head>
 <body>
-	<h1>Ciao sono la tua email ahahahahahahahahahahahahhahahhahahahh</h1>
+	<div>
+		<h3>Ciao sotto il titolo del post</h3>
+		Il post creato e {{$new_post->title}}
+	</div>
 </body>
 </html>

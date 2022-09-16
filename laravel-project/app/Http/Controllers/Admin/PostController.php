@@ -7,13 +7,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 
 use Carbon\Carbon;
 
 use App\Category;
 use App\Post;
 use App\Tag;
-
+use App\Mail\NewPostAdminEmail;
 class PostController extends Controller
 {
     /**
@@ -83,7 +84,7 @@ class PostController extends Controller
             $new_post->tags()->sync($form_data['tags']);
         }
         //invio una mail
-
+        Mail::to('admin@boolpress.it')->send(new NewPostAdminEmail($new_post));
         return redirect()->route('admin.posts.show', ['post' => $new_post->id]);
     }
 

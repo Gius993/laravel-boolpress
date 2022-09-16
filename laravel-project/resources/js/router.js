@@ -9,7 +9,7 @@ import AboutPage from './pages/AboutPage.vue';
 import BlogPage from './pages/BlogPage.vue';
 import ErrorPage from './pages/ErrorPage.vue';
 import SinglePost from './pages/SinglePost.vue';
-
+import ContactPage from './pages/ContactPage.vue';
 
 
 const router = new VueRouter({
@@ -26,6 +26,7 @@ const router = new VueRouter({
 			name: 'about',
 			component: AboutPage
 		},
+
 		{
 			path: '/blog', 
 			name: 'blog',
@@ -37,6 +38,12 @@ const router = new VueRouter({
 			component: SinglePost
 		},
 		
+		{
+			path: '/contact', 
+			name: 'npmcontact',
+			component: ContactPage
+		},
+
 		{
 			path: '/*', 
 			name: 'error',

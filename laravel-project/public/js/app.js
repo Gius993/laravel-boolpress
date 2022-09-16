@@ -2015,6 +2015,23 @@ __webpack_require__.r(__webpack_exports__);
       userEmail: '',
       userMessage: ''
     };
+  },
+  methods: {
+    sendMessage: function sendMessage() {
+      var _this = this;
+
+      this.sending = true;
+      axios.post('/api/leads', {
+        name: this.userName,
+        email: this.userEmail,
+        message: this.userMessage
+      }).then(function (response) {
+        _this.success = true;
+        _this.userName = '';
+        _this.userEmail = '';
+        _this.userMessage = '';
+      });
+    }
   }
 });
 

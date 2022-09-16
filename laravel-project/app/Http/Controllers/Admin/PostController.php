@@ -82,6 +82,7 @@ class PostController extends Controller
         if(isset($form_data['tags'])){
             $new_post->tags()->sync($form_data['tags']);
         }
+        //invio una mail
 
         return redirect()->route('admin.posts.show', ['post' => $new_post->id]);
     }
